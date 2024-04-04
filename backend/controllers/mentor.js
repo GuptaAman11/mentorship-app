@@ -128,7 +128,7 @@ const getProfile = async (req, res) => {
   }
 };
 const getProfileById = async (req, res) => {
-  const { id } = req.params ;
+  const { id } = req.params.id ;
   try {
     const user = await Mentor. findOne({ _id: id });
     if (!user) { 
@@ -142,7 +142,7 @@ const getProfileById = async (req, res) => {
   }
 }
 const deleteProfileById = async  (req,res)=>{
-  const {id}=req.params; 
+  const {id}=req.params.id; 
   console.log(id)
   try{ 
     const removed=await Mentor.findByIdAndDelete({_id : id});  

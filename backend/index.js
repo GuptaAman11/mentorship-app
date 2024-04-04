@@ -3,6 +3,7 @@ const app = express()
 const { Connection } = require('./db')
 const userRoutes = require('./routes/user')
 const mentorRoutes = require('./routes/mentor')
+const messageRoutes = require('./routes/message')
 const cors = require('cors')
 
 
@@ -20,4 +21,5 @@ Connection()
 
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/mentors', mentorRoutes);
+app.use('/api/v1/messages', messageRoutes);
 
