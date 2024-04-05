@@ -5,6 +5,7 @@ import Signup from './component/Login/Signup';
 import Profile from "./component/MenteeProfile/Profile";
 import MenteesCard from "./component/MenteeCard/MenteesCard";
 import DetailsPage from "./component/detailsPage/DetailsPage";
+import Dashboard from "./component/Dashboard/Dashboard";
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
             <Route path='/profile' element={<Profile /> } />
             <Route path='/card' element={<MenteesCard /> } />
             <Route path='/detail' element={<DetailsPage /> } />
-
+            <Route path='/dashboard' element={<Dashboard /> } />
 
 
 
