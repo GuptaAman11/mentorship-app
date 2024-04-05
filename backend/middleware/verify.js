@@ -13,11 +13,27 @@ module.exports.verifyJWT = async (req, res, next) => {
         const decoded = jwt.verify(token, 'secret_key')
 
         req.user = decoded;
-        console.log(decoded)
      
         next()
     }
     catch (error) {
         res.status(401).json({ msg:"cxcx"})
     }
+}
+
+
+module.exports.mentor = async(req,res,next) => {
+    try {
+        
+
+        typeOfUser = req.user.user.typeOfUser 
+        if (typeOfUser !== "mentor") {
+            res.status(200).json({ msg: "you are not mentor" });
+            console.log("mentor")
+            
+        }
+        next()
+    } catch (error) {
+        console.log(error)
+    }    
 }

@@ -1,0 +1,35 @@
+.menteecard-main-div{
+  display: flex;
+}
+.meenteecard-container {
+  border-radius: 12px;
+  margin-top: 30px;
+  margin-left: 30px;
+  width: 300px;
+  max-width: 100%;
+  height: 400px;
+  max-height:100% ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: (0,0,0,4px);
+}
+
+.image {
+  padding: 10px ;
+ 
+}
+
+.mentee-name {
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+.bio  {
+  padding: 10px 0;
+}
+
+.message-button {
+  background-color: blue;
+}

@@ -15,19 +15,25 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    image: { type: String },
-    skillLevel: { type: String },
-    address: { type: String },
-    numberOfMentors: [{ type: Number }],
-    qualification: { type: String },
+    phoneNumber: { type: String },
     gender: { type: String },
-    language: { type: String },
-    goal: { type: String },
+    address: { type: String },
+    language: [{ type: String }],
+    qualification: { type: String },
+    skillLevel: { type: String },
     areaOfInterest: [{ type: String }],
-    availability: [{ type: String }],
+    goal: { type: String },
     bio: { type: String },
+    availability: [{ type: String }],
     additionalInfo: { type: String },
-    phoneNumber: { type: String }
+    image: { type: String },
+    numberOfMentors: [{ type: Number }],
+    typeOfUser : {
+        type : String ,
+        enum : [ "mentor" , "mentee"],
+        },
+    experience : {type:String}
+
 })
 
 const User = mongoose.model("User", userSchema);

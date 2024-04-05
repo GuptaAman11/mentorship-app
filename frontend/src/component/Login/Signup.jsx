@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 
 const Signup = () => {
     const [registerFormData, setregisterFormData] = useState({
-        registerEmail:"" , registerName : ""  , registerPassword : ""
+        registerEmail:"" , registerName : ""  , registerPassword : "" , typeOfUser : ""
      })
+     console.log(registerFormData)
   
      const register = async()=> {
   
@@ -22,6 +23,7 @@ const Signup = () => {
                  name: registerFormData.registerName,
                  email: registerFormData.registerEmail,
                  password: registerFormData.registerPassword,
+                 typeOfUser : registerFormData.typeOfUser
   
              }),
            });
@@ -77,6 +79,14 @@ const Signup = () => {
           <label for="password">Password</label>
           <div class="mb-4">
             <input type="password" placeholder="Password" name="registerPassword"onChange={handleInputChange} class="w-full px-3 py-2 border rounded-lg" />
+          </div>
+          <div class="mb-4">
+            Role :
+            <select name="typeOfUser" id="" onChange={handleInputChange} required class="w-full px-3 py-2 border rounded-lg">
+              <option value="">Select Role</option>
+              <option value="mentor">Mentor</option>
+              <option value="mentee">Mentee</option>
+            </select>
           </div>
           <div class="mb-4">
             <button type="submit" class="w-full bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:outline-none">Submit</button>

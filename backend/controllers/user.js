@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 
 
 const register = async (req, res) => {
-    const { email, name, password } = req.body;
+    const { email, name, password ,typeOfUser} = req.body;
     try {
         if (!email || !name || !password) {
            return res.json({ mssg: "all fields are required" })
@@ -20,7 +20,8 @@ const register = async (req, res) => {
             {
                 name: name,
                 email: email,
-                password: hashedpassword
+                password: hashedpassword ,
+                typeOfUser:typeOfUser
             }
 
         )
@@ -60,15 +61,17 @@ const login = async (req, res) => {
 
 const editUser = async(req,res) => {
     const userId = req.user.user._id;
-    console.log(userId)
-    const { skillLevel, phoneNumber, address, numberOfMentors, qualification, gender, language, goal, areaOfInterest, availability, bio, additionalInfo  } = req.body;
+    
+    const { name ,email , phoneNumber, gender , address,language,qualification,skillLevel,areaOfInterest,goal,bio,availability,additionalInfo ,numberOfMentors ,experience} = req.body;
+    console.log(name ,email , phoneNumber, gender , address,language,qualification,skillLevel,areaOfInterest,goal,bio,availability,additionalInfo ,numberOfMentors)
     try {
         const user=await User.findById(userId)
-        console.log(user)
        if(!user) {
-        return res.status(404).json({msg:"user noot found"})
+        return res.status(404).json({msg:"user not found"})
        }
        const updateduser = await User.findByIdAndUpdate(userId, {
+        name : name ,
+        email:email,
         skillLevel:skillLevel ,
         phoneNumber:phoneNumber ,
         address:address ,
@@ -81,6 +84,7 @@ const editUser = async(req,res) => {
         availability : availability,
         bio : bio,
         additionalInfo : additionalInfo,
+        experience : experience ,
         image : req.file.path
     }, { new: true });
      return res.status(200).json(updateduser)
@@ -91,10 +95,55 @@ const editUser = async(req,res) => {
     
 }
 
+const getAllUserProfile = async (req, res) => {
+    try {
+      const mentees = await User.find();
+      if (!mentees) {
+        res.status(401).send("There are no profiles in the database yet.");
+      } else {
+        res.json(mentees);
+      }
+    } catch (error) {
+      console.error("Error fetching mentees:", error);
+      res.status(500).send("Internal server error");
+    }
+  };
+  const getUserProfileById = async (req, res) => {
+    const { userId } = req.params ;
+    const user1 = req.user.user._id
+    try {
+      const user = await User. findOne({ _id : userId });
+      if (!user) { 
+        return res.status(404 ).send("The requested user is not available.");
+      } 
+      
+      res.json(user); 
+    } catch (err) { 
+      console.log("Error getting user by  ID: ", err); 
+      res.status(500).send("Server Error"); 
+    }
+  }
+
+  const getLoggedInUserProfile = async(req,res)=>{
+    try {
+        const userId = req.user.user._id
+        const user = await User.findById(userId)
+        if(!user) {
+            console.log("no user found")
+        }
+        res.status(200).json(user)
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
 
 module.exports = {
     register,
     login,
-    editUser
+    editUser,
+    getAllUserProfile ,
+    getLoggedInUserProfile,
+    getUserProfileById
 
 }

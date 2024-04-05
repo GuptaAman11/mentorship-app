@@ -4,9 +4,10 @@ const mentorSchema = new mongoose.Schema({
  email: { type: String, lowercase: true, trim: true, required: true, unique: true },
 
   password: { type: String  },
-  experienceLevel: [{ type: String }],
-  areaofinterest: { type: String },
+  experienceLevel: { type: String },
+  areaofinterest: [{ type: String }],
   bio: { type: String, length: 1024 },
+  qualification : {type : String},
   availability: [
     {
       dayOfWeek: { type: Number, min: 0, max: 6 }, // 0 - Sunday , 1 - Monday ... etc
