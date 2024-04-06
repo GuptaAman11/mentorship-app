@@ -12,12 +12,12 @@ const MenteesCard = () => {
   const mentor = allUser.filter((user) => user.typeOfUser === "mentor");
   console.log(mentor);
 
-  const mentees = allUser.filter((user) => user.typeOfUser === "mentees");
+  const mentees = allUser.filter((user) => user.typeOfUser === "mentee");
   console.log(mentees);
 
   return (
     <div className="menteecard-main-div">
-      {allUser.map((user, index) => (
+      {mentees.map((user, index) => (
         <div key={index} className="meenteecard-container">
           <div className="image">
             <img src={`http://localhost:8000/${user.image}`} alt="" />
