@@ -6,6 +6,7 @@ import Profile from "./component/MenteeProfile/Profile";
 import MenteesCard from "./component/MenteeCard/MenteesCard";
 import DetailsPage from "./component/detailsPage/DetailsPage";
 import Dashboard from "./component/Dashboard/Dashboard";
+// import Navbar from "./component/navbar/Navbar";
 
 
 function App() {
@@ -20,14 +21,13 @@ function App() {
         <Routes>
 
 
-
           <Route path='/login' element={<Login1 /> } />
             <Route path='/signup' element={<Signup /> } />
             <Route path='/profile' element={<Profile /> } />
             <Route path='/card' element={<MenteesCard /> } />
             <Route path='/detail' element={<DetailsPage /> } />
             <Route path='/dashboard' element={<Dashboard /> } />
-
+            {/* <Route path='/nav' element={<Navbar /> } /> */}
 
 
 
