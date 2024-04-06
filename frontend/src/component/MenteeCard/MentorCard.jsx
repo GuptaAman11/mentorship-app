@@ -2,23 +2,23 @@ import React, { useEffect } from 'react';
 import   './menteecard.css';
 import { useGetAllUser } from '../../hooks/menteesHooks';
 
-const MenteesCard = () => {
+const MentorCard = () => {
   const {getAllUser ,allUser} = useGetAllUser()
   useEffect(()=>{
     getAllUser()
   },[])
 
 
+  const mentor  = allUser.filter(user => user.typeOfUser==='mentor')
+  console.log(mentor)
 
-  const mentees  = allUser.filter(user => user.typeOfUser==='mentees')
-  console.log(mentees)
 
   // }
   return (
    <>
    {
-    mentees.length===0?(<div><h1>not found</h1></div>):(<div className='menteecard-main-div'>
-    { mentees.map((user ,index) =>(
+    mentor.length===0 ?(<div><h1>no mentor found</h1></div>) : (<div className='menteecard-main-div'>
+    { mentor.map((user ,index) =>(
        <div key={index} className="meenteecard-container">
      <div className="image">
        <img src={`http://localhost:8000/${user.image}`} alt="" />
@@ -34,4 +34,4 @@ const MenteesCard = () => {
   );
 };
 
-export default MenteesCard;
+export default MentorCard;

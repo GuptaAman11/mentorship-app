@@ -12,16 +12,16 @@ const DetailsPage = () => {
 
   const [formData, setFormData] = useState({
     // name: '',
-    skillLevel: '',
+    skillLevel:loggedUser.skillLevel ,
     // email: '',
-    qualification:'',
-    address : '',
-    gender: '',
-    goal:'',
-    bio: '',
+    qualification: loggedUser.qualification,
+    address : loggedUser.address,
+    gender: loggedUser.gender,
+    goal:loggedUser.goal,
+    bio: loggedUser.bio,
     additionalInformation: '',
-    phoneNumber: '' ,
-    experience : ''
+    phoneNumber: loggedUser.phoneNumber ,
+    experience : loggedUser.experience
   });
   console.log(formData)
    const [image ,setImage] = useState()
@@ -86,13 +86,13 @@ const DetailsPage = () => {
 
       <label>
         Phone Number
-        <input type='Number' name='phoneNumber' className='input-field' value={loggedUser.phoneNumber} onChange={handleChange}/>
+        <input type='Number' name='phoneNumber' className='input-field' value={formData.phoneNumber} onChange={handleChange}/>
       </label>
 
       <label>
         Gender:
         
-        <select name="gender" value={loggedUser.gender} onChange={handleChange} className="input-field">
+        <select name="gender" value={formData.gender} onChange={handleChange} className="input-field">
           <option value="">Select Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -102,7 +102,7 @@ const DetailsPage = () => {
 
       <label>
         Address
-        <input type='text' name='address' className='input-field' value={loggedUser.address} onChange={handleChange} />
+        <input type='text' name='address' className='input-field' value={formData.address} onChange={handleChange} />
       </label>
 
      
@@ -113,7 +113,7 @@ const DetailsPage = () => {
                     isObject={false}
                     options={options}
                     selectedValues={selectedLanguages}
-                    value ={loggedUser.language}
+                    value ={formData.language}
                     onSelect={(selectedList) => {
                       setSelectedLanguages([...selectedLanguages, selectedList[selectedList.length - 1]]);
                     }}
@@ -165,6 +165,7 @@ const DetailsPage = () => {
         Area OF Interest :
         <input type='text' placeholder='enter interested field seeperated by commas' 
                     onChange={getValues} 
+                    value={formData.areaOfInterest}
                     id='textInput'
                     className='input-field'
                 />
@@ -185,6 +186,7 @@ const DetailsPage = () => {
       <label>
         Language :
         <Multiselect 
+                  
                     isObject={false}
                     options={availabilityTime}
                     selectedValues={availability}

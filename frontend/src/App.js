@@ -11,6 +11,7 @@ import Upsession from "./component/Upsession/Upsession";
 
 
 
+import MentorCard from "./component/MenteeCard/MentorCard";
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
             <Route path='/signup' element={<Signup /> } />
             <Route path='/profile' element={<Profile /> } />
             <Route path='/card' element={<MenteesCard /> } />
+            <Route path='/cards' element={<MentorCard /> } />
+
             <Route path='/detail' element={<DetailsPage /> } />
             <Route path='/dashboard' element={<Dashboard /> } />
             <Route path='/nav' element={<Navbar /> } />

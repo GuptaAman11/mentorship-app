@@ -19,12 +19,17 @@ const sessionSchema = new mongoose.Schema({
 
     date :  {
         type : Date
+    } ,
+    time : {
+        type : String,
+        
+
     }
 
 
 })
 
-const Session = mongoose.model("User", sessionSchema);
+const Session = mongoose.model("Session", sessionSchema);
 
 
 module.exports = Session;
