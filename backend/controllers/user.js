@@ -61,9 +61,7 @@ const login = async (req, res) => {
 
 const editUser = async(req,res) => {
     const userId = req.user.user._id;
-    
-    const { name ,email , phoneNumber, gender , address,language,qualification,skillLevel,areaOfInterest,goal,bio,availability,additionalInfo ,numberOfMentors ,experience} = req.body;
-    console.log(name ,email , phoneNumber, gender , address,language,qualification,skillLevel,areaOfInterest,goal,bio,availability,additionalInfo ,numberOfMentors)
+    const { name, email, skillLevel, phoneNumber, address, numberOfMentors, qualification , gender, language, goal, areaOfInterest, availability, bio, additionalInfo, experience } = req.body;
     try {
         const user=await User.findById(userId)
        if(!user) {

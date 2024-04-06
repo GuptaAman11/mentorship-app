@@ -36,6 +36,7 @@ const MenteesCard = () => {
         </div>
       ))}
     </div>
+
   );
 };
 
