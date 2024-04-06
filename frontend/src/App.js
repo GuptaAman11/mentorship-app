@@ -5,6 +5,7 @@ import Signup from './component/Login/Signup';
 import Profile from "./component/MenteeProfile/Profile";
 import MenteesCard from "./component/MenteeCard/MenteesCard";
 import DetailsPage from "./component/detailsPage/DetailsPage";
+import MentorCard from "./component/MenteeCard/MentorCard";
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
             <Route path='/signup' element={<Signup /> } />
             <Route path='/profile' element={<Profile /> } />
             <Route path='/card' element={<MenteesCard /> } />
+            <Route path='/cards' element={<MentorCard /> } />
+
             <Route path='/detail' element={<DetailsPage /> } />
 
 
