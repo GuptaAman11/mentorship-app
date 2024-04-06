@@ -9,6 +9,7 @@
     /* font-family: "Young Serif", serif; */
     /* font-family: "Poppins", sans-serif; */
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
   }
   
   :root {
@@ -35,7 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--bg-color);
+    /* background: var(--bg-color); */
     /* color: var(--text-color); */
   }
   
@@ -64,8 +65,8 @@
     /* width: 20vw;
       height: 30vh;
       background-color: red; */
-    width: 15rem;
-    height: 15rem;
+    width: 13rem;
+    height: 13rem;
     background-image: url("https://images.unsplash.com/photo-1712068944613-1ff36db16612?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"); /* Specify the path to your image */
     background-size: cover;
     background-position: center;
@@ -155,14 +156,16 @@
   }
   
   .dashboard-card {
-    height: calc(65vh- 40vh);
-    border: green;
+    height:23vh;
+    width: 100%;
+    /* border: green; */
+    /* background:var(--bg-color); */
     /* background: yellow; */
     display: flex;
     justify-content: space-between;
     padding: 0rem 4rem;
     align-items: center;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
   }
   
   .count-of-mentee {
@@ -221,4 +224,16 @@
   
   .rating p,h2{
       text-align: center;
+  }
+
+
+  @media screen and (max-width:1025px) {
+
+ .dashboard-sub-container {
+    height: 100vh;
+    /* width: 80%; */
+   
+   
+   
+  }
   }

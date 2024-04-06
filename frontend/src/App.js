@@ -6,7 +6,11 @@ import Profile from "./component/MenteeProfile/Profile";
 import MenteesCard from "./component/MenteeCard/MenteesCard";
 import DetailsPage from "./component/detailsPage/DetailsPage";
 import Dashboard from "./component/Dashboard/Dashboard";
-// import Navbar from "./component/navbar/Navbar";
+import Navbar from "./component/navbar/Navbar";
+import Upsession from "./component/Upsession/Upsession";
+
+
+
 
 
 function App() {
@@ -27,9 +31,9 @@ function App() {
             <Route path='/card' element={<MenteesCard /> } />
             <Route path='/detail' element={<DetailsPage /> } />
             <Route path='/dashboard' element={<Dashboard /> } />
-            {/* <Route path='/nav' element={<Navbar /> } /> */}
+            <Route path='/nav' element={<Navbar /> } />
 
-
+            <Route path='/session' element={<Upsession/> } />
 
         </Routes>
       

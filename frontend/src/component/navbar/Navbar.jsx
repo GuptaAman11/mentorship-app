@@ -26,7 +26,7 @@ function Navbar() {
 <button type="submit" className="navbtn1"><FontAwesomeIcon icon={faSearch} /></button>
 </div>
           {/* <button id="navbtn" className="button">Dashboard</button> */}
-          {/* <button id="navbtn2" className="button">Login</button> */}
+          <button id="navbtn2" className="button">Login</button>
           <div className="nav-img"></div>
        </div>
        </div>
