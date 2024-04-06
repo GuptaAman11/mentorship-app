@@ -5,35 +5,25 @@ import Signup from './component/Login/Signup';
 import Profile from "./component/MenteeProfile/Profile";
 import MenteesCard from "./component/MenteeCard/MenteesCard";
 import DetailsPage from "./component/detailsPage/DetailsPage";
+import MessagingContainer from "./component/Messages/MessageContainer";
+import Inbox from "./component/Messages/Inbox";
 
 
 function App() {
   return (
     <div className="App">
-      
-      
-      
       <Router>
-      
-      
         <Routes>
+          <Route path="/login" element={<Login1 />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/card" element={<MenteesCard />} />
+          <Route path="/detail" element={<DetailsPage />} />
+          <Route path="/message" element={<Inbox />} />
 
-
-
-          <Route path='/login' element={<Login1 /> } />
-            <Route path='/signup' element={<Signup /> } />
-            <Route path='/profile' element={<Profile /> } />
-            <Route path='/card' element={<MenteesCard /> } />
-            <Route path='/detail' element={<DetailsPage /> } />
-
-
-
-
-
+          <Route path="/messages/:userId" element={<MessagingContainer />} />
         </Routes>
-      
-    </Router>
-
+      </Router>
     </div>
   );
 }
