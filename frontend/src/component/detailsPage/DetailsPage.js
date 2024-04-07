@@ -5,6 +5,7 @@ import {
   useLoggedInUser,
   useUpdateUserProfile,
 } from "../../hooks/menteesHooks";
+import {useNavigate} from  'react-router';
 
 const DetailsPage = () => {
   const { updateProfile } = useUpdateUserProfile();
@@ -12,7 +13,7 @@ const DetailsPage = () => {
   useEffect(() => {
     loggedInUser();
   }, []);
-
+const navigate = useNavigate();
   const [formData, setFormData] = useState({
     // name: '',
     skillLevel: loggedUser.skillLevel,
@@ -55,6 +56,18 @@ const DetailsPage = () => {
       image
     );
   };
+//defining the skip function
+const handleOnSubmit = () =>{
+  console.log(loggedUser.typeOfUser);
+  if (loggedUser.typeOfUser === "mentor") {
+    navigate(`/dashboard/${loggedUser._id}`);
+  }
+  if (loggedUser.typeOfUser === "mentee") {
+    navigate("/profile");
+  }
+
+}
+
 
   return (
     <div className="a-container">
@@ -64,7 +77,7 @@ const DetailsPage = () => {
 
           {/* <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/236886/profile/profile-512.jpg?1501731600" alt=""/> */}
           <div id="name" className="name">
-            mariya manga
+            Mentor WebApp
           </div>
         </div>
 
@@ -84,11 +97,13 @@ const DetailsPage = () => {
             <label>
               Phone Number
               <input
-                type="Number"
+                pattern="[0-9]{10}"
+                type="tel"
                 name="phoneNumber"
                 className="input-field"
                 value={formData.phoneNumber}
                 onChange={handleChange}
+                required
               />
             </label>
 
@@ -115,6 +130,7 @@ const DetailsPage = () => {
                 className="input-field"
                 value={formData.address}
                 onChange={handleChange}
+                required
               />
             </label>
 
@@ -201,6 +217,7 @@ const DetailsPage = () => {
                 value={formData.areaOfInterest}
                 id="textInput"
                 className="input-field"
+                required
               />
             </label>
 
@@ -211,6 +228,7 @@ const DetailsPage = () => {
                 value={formData.goal}
                 onChange={handleChange}
                 className="textarea-field"
+                required
               />
             </label>
 
@@ -221,6 +239,7 @@ const DetailsPage = () => {
                 value={formData.bio}
                 onChange={handleChange}
                 className="textarea-field"
+                required
               />
             </label>
 
@@ -256,6 +275,7 @@ const DetailsPage = () => {
                   value={formData.additionalInformation}
                   onChange={handleChange}
                   className="textarea-field"
+                  required
                 />
               </label>
               Profile Image :
@@ -264,17 +284,22 @@ const DetailsPage = () => {
                 name="image"
                 onChange={(e) => setImage(e.target.files[0])}
                 className="input-field"
+                required
               />
             </label>
 
             <button type="submit" className="submit-button">
               Submit
             </button>
+            <label>Skip if you already filled details</label>
+            <button type="submit" className="submit-button" onClick={handleOnSubmit}>
+              Skip
+            </button>
           </form>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default DetailsPage;

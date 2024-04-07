@@ -33,6 +33,14 @@ const userSchema = new mongoose.Schema({
         enum : [ "mentor" , "mentee"],
         },
     experience : {type:String}
+    , noOfSessionsCreate : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Session"
+    }],
+    noOfSessionJoined : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Session"
+    }]
 
 })
 

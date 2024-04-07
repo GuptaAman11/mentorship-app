@@ -13,6 +13,8 @@ import Dashboard from "./component/Dashboard/Dashboard";
 import Navbar from "./component/navbar/Navbar";
 import Upsession from "./component/Upsession/Upsession";
 import MentorCard from "./component/MenteeCard/MentorCard";
+import CreateSession from "./component/Upsession/CreateSession";
+import SessionView from "./component/SessionView/SessionView";
 
 function App() {
   return (
@@ -32,12 +34,17 @@ function App() {
 
           <Route path="/detail" element={<DetailsPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          {/* <Route path="/" element={<Navbar />} /> */}
-
+ 
           <Route path="/session" element={<Upsession />} />
 
-          <Route path="/message" element={<Inbox />} />
+             <Route path='/dashboard/:mentorId' element={<Dashboard /> } />
+            <Route path='/nav' element={<Navbar /> } />
 
+             <Route path='/createsession' element={<CreateSession/> } />
+            <Route path='/sessionbyid' element={<SessionView/> } />
+
+
+ 
           <Route path="/messages/:userId" element={<MessagingContainer />} />
         </Routes>
       </Router>
