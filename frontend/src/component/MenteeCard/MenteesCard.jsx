@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const MenteesCard = ({ data }) => {
   const { getAllUser, allUser } = useGetAllUser();
-
+ 
   useEffect(() => {
     getAllUser();
   }, []);

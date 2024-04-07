@@ -4,6 +4,10 @@ import Login1 from './component/Login/Login1';
 import Signup from './component/Login/Signup';
 import Profile from "./component/MenteeProfile/Profile";
 import MenteesCard from "./component/MenteeCard/MenteesCard";
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 import DetailsPage from "./component/detailsPage/DetailsPage";
 import MessagingContainer from "./component/Messages/MessageContainer";
 import Inbox from "./component/Messages/Inbox";
@@ -22,6 +26,7 @@ import SessionView from "./component/SessionView/SessionView";
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Router>
         <Navbar />
         <Routes>
@@ -44,7 +49,7 @@ function App() {
 
             <Route path='/session' element={<Upsession/> } />
             <Route path='/createsession' element={<CreateSession/> } />
-            <Route path='/sessionbyid' element={<SessionView/> } />
+            <Route path='/sessionbyid/:sessionId' element={<SessionView/> } />
 
 
 

@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
+const cloudinary = require("../utils/cloudinary");
 
 const register = async (req, res) => {
     const { email, name, password ,typeOfUser} = req.body;
@@ -61,7 +61,7 @@ const editUser = async(req,res) => {
     const userId = req.user.user._id;
     const { name, email, skillLevel, phoneNumber, address, numberOfMentors, qualification , gender, language, goal, areaOfInterest, availability, bio, additionalInfo, experience } = req.body;
     try {
-        const user=await User.findById(userId)
+      const user=await User.findById(userId)
        if(!user) {
         return res.status(404).json({msg:"user not found"})
        }
@@ -82,6 +82,7 @@ const editUser = async(req,res) => {
         additionalInfo : additionalInfo,
         experience : experience ,
         image : req.file.path
+        
     }, { new: true });
      return res.status(200).json(updateduser)
     } catch (error) {

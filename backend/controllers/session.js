@@ -2,14 +2,15 @@ const Session = require('../models/session')
 const User = require('../models/User')
 const cloudinary = require("../utils/cloudinary");
 
-
+ 
 const createSession = async (req, res) => {
     const user = req.user.user._id;
+
+    
 
     const { title, description, domain, topic, timeField, date } = req.body;
     
     try {
-        const result = await cloudinary.uploader.upload(req.file.path);
         
         const newSession = await Session.create({
             title: title,
@@ -19,7 +20,7 @@ const createSession = async (req, res) => {
             timeField: timeField,
             date: date,
             author: user,
-            image: result.secure_url
+            image: req.file.path
         });
 
         return res.status(200).json(newSession);
