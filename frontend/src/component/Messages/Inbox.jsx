@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "./inbox.css"
 const Inbox = ({ userId }) => {
   const [messages, setMessages] = useState([]);
   console.log(messages)
@@ -38,7 +38,7 @@ const Inbox = ({ userId }) => {
   }, [userId]);
 
   return (
-    <div>
+    <div className="message-inbox">
       {loading ? (
         <p>Loading...</p>
       ) : error ? (

@@ -19,7 +19,7 @@
   }
   .dashboard-container {
     font-family: Arial, Helvetica, sans-serif;
-
+padding-top: 7rem;
     color: white;
     justify-content: center;
     margin-top: 30px;
@@ -48,7 +48,7 @@
     /* gap: 3rem; */
     justify-content: space-between;
     padding: 2rem 4rem;
-    background: var(--second-bg-color);
+    /* background: var(--second-bg-color); */
   }
   .img {
     /* width: 20vw;
@@ -100,10 +100,10 @@
     /* align-items: center; */
     flex-direction: column;
     /* border: 2px solid #ccc;  */
-    box-shadow: 2px 2px 5px rgba(24, 24, 102, 0.5),
+    /* box-shadow: 2px 2px 5px rgba(24, 24, 102, 0.5),
       -2px -2px 5px rgba(49, 49, 238, 0.5), 2px -2px 5px rgba(39, 39, 240, 0.5),
       -2px 2px 5px rgba(53, 53, 247, 0.5);
-    border-radius: 1rem;
+    border-radius: 1rem; */
   }
   
   
@@ -175,7 +175,7 @@
   .experience-level {
     width: 15vw;
     height: 10vh;
-    background: var(--second-bg-color);
+    background: rgb(42, 106, 110);
     padding: 1rem;
     line-height: 2rem;
     display: flex;
@@ -186,11 +186,11 @@
   .experience-level {text-align: center;
   
   }
-  
+
   .count-of-mentee {
     width: 15vw;
     height: 10vh;
-    background: var(--second-bg-color);
+    background: rgb(42, 106, 110);
     padding: 1rem;
     line-height: 2rem;
     display: flex;
@@ -202,12 +202,13 @@
   .rating {
     width: 15vw;
     height: 10vh;
-    background: var(--second-bg-color);
+    background: rgb(42, 106, 110);
     padding: 1rem;
     line-height: 2rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    /* border: 2px solid var(--second-bg-color); */
     border-radius: 2rem;
   }
   
