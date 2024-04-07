@@ -49,11 +49,12 @@ const getSessionBySessionId  = async(req,res) => {
         if (session) {
             return res.status(200).json(session)
         }else {
-            res.status(500).json({msg : "No Session found"})
+            return res.status(500).json({msg : "No Session found"})
         }
 
     } catch (error) {
-        
+        return res.status(500).json({error})
+
     }
 }
 

@@ -9,15 +9,14 @@ const newComment = async (req, res) => {
     
 
     if(!comment){
-        res.status(401).json({msg : "comment cant be empty"});
+        return res.status(401).json({msg : "comment cant be empty"});
 
     }
 
     const session = await Session.findById(sessionId);
-    console.log(session)
 
     if(!session){
-        res.status(404).json({msg : "session not found"})
+        return res.status(404).json({msg : "session not found"})
     }
     try {
         
@@ -33,7 +32,7 @@ const newComment = async (req, res) => {
         await addComment.save();
 
         // const session1 =  Session.findById(sessionId);
-        res.status(200).json(addComment );
+        return res.status(200).json(addComment );
 
 
 
@@ -41,7 +40,7 @@ const newComment = async (req, res) => {
         
     }
     catch(err){
-        console.log(err)
+        return res.status(400).json(err );
     }
 };
 const getComments = async (req, res) => {
@@ -64,12 +63,12 @@ const getCommentById = async (req,res) => {
     const {sessionId} = req.params ; 
     try{
  
-        const comment =await Comment.find({sessionId:sessionId})
+        const comment =await Comment.find({sessionId:sessionId}).populate('author');
         if(!comment){
             res.status(401).json({msg: "comment not found"})
     
         }
-        res.status(200).json({comment:comment});
+        res.status(200).json({comment});
     } catch (error) {
         console.log(error)
         res.status(500).json({error})

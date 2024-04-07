@@ -27,10 +27,9 @@ const register = async (req, res) => {
         )
         await newUser.save();
 
-        res.json({ mssg: "user created succesfully" })
+       return res.json({ mssg: "user created succesfully" })
 
     } catch (error) {
-        console.log(error)
         res.json({ error: error })
     }
 }
@@ -53,8 +52,7 @@ const login = async (req, res) => {
         }
 
     } catch (error) {
-        res.json(error);
-        console.log(error)
+       return res.json(error);
     }
 }
 
@@ -87,8 +85,7 @@ const editUser = async(req,res) => {
     }, { new: true });
      return res.status(200).json(updateduser)
     } catch (error) {
-        console.log(error)
-        res.status(500).json(error)
+       return res.status(500).json(error)
     }
     
 }
@@ -99,11 +96,11 @@ const getAllUserProfile = async (req, res) => {
       if (!mentees) {
         res.status(401).send("There are no profiles in the database yet.");
       } else {
-        res.json(mentees);
+        return res.json(mentees);
       }
     } catch (error) {
       console.error("Error fetching mentees:", error);
-      res.status(500).send("Internal server error");
+      return res.status(500).send("Internal server error");
     }
   };
   const getUserProfileById = async (req, res) => {
@@ -118,7 +115,7 @@ const getAllUserProfile = async (req, res) => {
       res.json(user); 
     } catch (err) { 
       console.log("Error getting user by  ID: ", err); 
-      res.status(500).send("Server Error"); 
+      return res.status(500).send("Server Error"); 
     }
   }
 
@@ -127,11 +124,11 @@ const getAllUserProfile = async (req, res) => {
         const userId = req.user.user._id
         const user = await User.findById(userId)
         if(!user) {
-            console.log("no user found")
+          return res.status(400).json("user not found")
         }
-        res.status(200).json(user)
+        return res.status(200).json(user)
     } catch (error) {
-        console.log(error)
+      return res.status(400).json(error)
     }
   }
 
