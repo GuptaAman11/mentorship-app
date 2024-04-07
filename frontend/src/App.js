@@ -7,10 +7,11 @@ import MenteesCard from "./component/MenteeCard/MenteesCard";
 import DetailsPage from "./component/detailsPage/DetailsPage";
 import MessagingContainer from "./component/Messages/MessageContainer";
 import Inbox from "./component/Messages/Inbox";
+ 
+ 
 import Dashboard from "./component/Dashboard/Dashboard";
 import Navbar from "./component/navbar/Navbar";
 import Upsession from "./component/Upsession/Upsession";
-
 import MentorCard from "./component/MenteeCard/MentorCard";
 
 function App() {
@@ -34,6 +35,10 @@ function App() {
           {/* <Route path="/" element={<Navbar />} /> */}
 
           <Route path="/session" element={<Upsession />} />
+
+          <Route path="/message" element={<Inbox />} />
+
+          <Route path="/messages/:userId" element={<MessagingContainer />} />
         </Routes>
       </Router>
     </div>

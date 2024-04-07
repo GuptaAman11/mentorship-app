@@ -4,6 +4,7 @@
     box-sizing: border-box;
   }
   .navbar {
+    position: relative;
     background: #ebe9e9;
     display: flex;
     justify-content: space-evenly;
