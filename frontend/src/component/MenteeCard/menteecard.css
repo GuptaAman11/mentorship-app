@@ -1,8 +1,10 @@
 
 .menteecard-main-div{
   display: flex;
+  
 }
 .meenteecard-container {
+  
   border-radius: 12px;
   margin-top: 30px;
   margin-left: 30px;

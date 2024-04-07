@@ -2,6 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+import { faBell } from '@fortawesome/free-solid-svg-icons';
+
 import "./navbar.css";
 function Navbar() {
   const navigate = useNavigate();
@@ -54,7 +57,12 @@ function Navbar() {
           <button id="navbtn2" className="button" onClick={handlleOnclick}>
             Login
           </button>
+        
+          
           <div className="nav-img"></div>
+          <div className="notification-icon">
+          <FontAwesomeIcon icon={faBell} />
+          </div>
         </div>
       </div>
     </>

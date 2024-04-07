@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./messageForm.css"
 const SendMessageForm = ({ recipientId, onSendMessage }) => {
   const [content, setContent] = useState("");
 
@@ -10,7 +10,8 @@ const SendMessageForm = ({ recipientId, onSendMessage }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="message-form-container">
+    <form className="message-form" onSubmit={handleSubmit}>
       <label>
         Message:
         <textarea
@@ -18,8 +19,9 @@ const SendMessageForm = ({ recipientId, onSendMessage }) => {
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
       </label>
-      <button type="submit">Send</button>
+      <button type="submit" className="message-btn">Send</button>
     </form>
+    </div>
   );
 };
 

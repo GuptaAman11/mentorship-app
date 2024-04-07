@@ -41,11 +41,7 @@ function Dashboard() {
               </div>
             </div>
             <div className="other-detail">
-              <h2>Start were you left</h2>
-              <p>hii here you have a chance of creating new things</p>
-              <div class="btn-box">
-                <button className="dashboard-btn">Start</button>
-              </div>
+              
             </div>
           </div>
         
@@ -77,17 +73,17 @@ function Dashboard() {
           <div className="blog-post bg-white  shadow-md rounded-lg flex items-center space-x-10 my-10 p-10 relative ">
             <Link to="/sessionbyid">
             <div className="w-96 h-72 relative">
-                <img src={session.image} alt="Blog Post Image" className="w-full h-full object-cover rounded-lg" />
+                <img src={`http://localhost:8000/${session.image}`} alt="Blog Post Image" className="w-full h-full object-cover rounded-lg" />
                 <div className="absolute w-full h-full top-0 left-0 shadow-md bg-opacity-50 rounded-lg"></div>
             </div>
             </Link>
-            <div className="flex-1">
+            <div className="flex-1  ">
                 <div className="mb-5">
-                    <span className="block text-gray-700 text-sm font-semibold mb-1"></span>
-                    <span className="block text-gray-700 text-sm font-semibold">{session.title}</span>
+                    <span className="block text-gray-700 text-2xl font-semibold mb-1">Title: {session.title}</span>
+                    <span className="block text-xl text-gray-700  font-semibold">Topic:</span>
                 </div>
-                <h1 className="text-2xl font-bold text-blue-500 mb-3 uppercase">{session.domain}</h1>
-                <p className="text-sm text-gray-600 mb-5">{session.description}</p>
+                <h1 className="text-xl font-bold text-blue-500 mb-3 uppercase">Domain:{session.domain}</h1>
+                <p className="text-xl text-gray-600 mb-5">Description: {session.description}</p>
             </div>
             
             <div className="absolute bottom-4 right-4  ">
