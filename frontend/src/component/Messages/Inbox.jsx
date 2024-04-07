@@ -48,7 +48,7 @@ const Inbox = ({ userId }) => {
           {messages.map((message) => (
             <li key={message._id}>
               <div className="bg-white m-4 p-6 rounded shadow text-black">
-                <strong>{message.sender.name}:</strong>
+                <strong> {message.sender.name}:</strong>
 
                 {message.content}
                 <br />

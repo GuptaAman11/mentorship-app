@@ -30,11 +30,11 @@ const Login1 = () => {
          if (response.ok) {
             await setUser(responseData)
             if (loginData.typeOfUser === 'mentor') {
-              navigate(`/dashboard/${responseData.user._id}`)
-
+              // navigate()`/dashboard/${responseData.user._id}`;
+              navigate("/detail");
             }
             else if (loginData.typeOfUser === 'mentee') {
-              navigate('/profile')
+              navigate('/detail')
 
             }
 
