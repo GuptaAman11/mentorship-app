@@ -73,7 +73,7 @@ function Dashboard() {
           <div className="blog-post bg-white  shadow-md rounded-lg flex items-center space-x-10 my-10 p-10 relative ">
             <Link to="/sessionbyid">
             <div className="w-96 h-72 relative">
-                <img src={session.image} alt="Blog Post Image" className="w-full h-full object-cover rounded-lg" />
+                <img src={`http://localhost:8000/${session.image}`} alt="Blog Post Image" className="w-full h-full object-cover rounded-lg" />
                 <div className="absolute w-full h-full top-0 left-0 shadow-md bg-opacity-50 rounded-lg"></div>
             </div>
             </Link>
