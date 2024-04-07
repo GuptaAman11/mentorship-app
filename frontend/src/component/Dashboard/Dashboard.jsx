@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMobileAlt } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { Link, useParams } from "react-router-dom";
+import { useGetSessionByMentorId } from "../../hooks/session";
 
-function Dashboard() {
+function Dashboard() { 
+  const params = useParams()
+
+  const {mentorId} = params;
+  console.log(mentorId)
+  const { sessionData , getSessionByMentorId } = useGetSessionByMentorId();
+  useEffect(() =>{
+    getSessionByMentorId(mentorId)
+},[])
+  console.log(sessionData)
+  
   return (
     <>
+      <div className="dash-main-container">
       <div className="dashboard-container">
+        
      
         <div className="dashboard-sub-container">
           <div className="dashbord-deatil">
@@ -57,6 +71,40 @@ function Dashboard() {
         </div>
         </div>
       </div>
+      <div>
+      {
+        sessionData.map((session) => (
+          <div className="blog-post bg-white  shadow-md rounded-lg flex items-center space-x-10 my-10 p-10 relative ">
+            <Link to="/sessionbyid">
+            <div className="w-96 h-72 relative">
+                <img src={session.image} alt="Blog Post Image" className="w-full h-full object-cover rounded-lg" />
+                <div className="absolute w-full h-full top-0 left-0 shadow-md bg-opacity-50 rounded-lg"></div>
+            </div>
+            </Link>
+            <div className="flex-1">
+                <div className="mb-5">
+                    <span className="block text-gray-700 text-sm font-semibold mb-1"></span>
+                    <span className="block text-gray-700 text-sm font-semibold">{session.title}</span>
+                </div>
+                <h1 className="text-2xl font-bold text-blue-500 mb-3 uppercase">{session.domain}</h1>
+                <p className="text-sm text-gray-600 mb-5">{session.description}</p>
+            </div>
+            
+            <div className="absolute bottom-4 right-4  ">
+            <button  className='bg-blue-500 text-white px-11 py-2 rounded-lg mr-1'>delete</button>
+
+
+                <button className="bg-gray-700 text-white px-5 py-2 rounded-lg mr-1">Comment</button>
+            </div>
+        </div>
+        ))
+      }
+        
+
+
+        </div>
+      </div>
+     
     </>
   );
 }

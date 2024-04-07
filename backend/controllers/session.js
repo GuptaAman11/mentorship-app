@@ -1,26 +1,34 @@
 const Session = require('../models/session')
 const User = require('../models/User')
+const cloudinary = require("../utils/cloudinary");
 
 
-const createSession = async(req,res) => {
-    const user = req.user.user._id  
-    const {title , description , domain , topic  , timeField , date} = req.body
+const createSession = async (req, res) => {
+    const user = req.user.user._id;
+
+    const { title, description, domain, topic, timeField, date } = req.body;
+    
     try {
-        const newSession = await Session.create({
-            title : title,
-            description : description ,
-            domain : domain ,
-            topic : topic ,
-            image : req.file.path ,
-            timeField : timeField ,
-            date : date
-
-        })
-        return res.status(200).json(newSession)
-    } catch (error) {
+        const result = await cloudinary.uploader.upload(req.file.path);
         
+        const newSession = await Session.create({
+            title: title,
+            description: description,
+            domain: domain,
+            topic: topic,
+            timeField: timeField,
+            date: date,
+            author: user,
+            image: result.secure_url
+        });
+
+        return res.status(200).json(newSession);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ success: false, message: "Error creating session." });
     }
-} 
+};
+
 
 const getAllSession = async(req,res) => {
     try {
@@ -49,16 +57,47 @@ const getSessionBySessionId  = async(req,res) => {
     }
 }
 
-const getSessionByMentorId = async(req,res) => {
-    const user = req.user.user._id
-    const {mentorId} = req.params
+const getSessionByMentorId = async (req, res) => {
+    const { mentorId } = req.params;
     try {
-        const session = await Session.findById('Session.author._id' === mentorId)
-        if(session){
-            return res.status(200).json(session)
-        }else{
-            return res.status(500).json({msg : "this user dont have any session "})
+        const sessions = await Session.find({ "author": mentorId });
+        if (sessions.length > 0) {
+            return res.status(200).json(sessions);
+        } else {
+            return res.status(404).json({ msg: "No sessions found for this mentor." });
         }
+    } catch (error) {
+        return res.status(500).json({ msg: "Internal server error." });
+    }
+};
+
+const updateSession = async(req,res) => {
+    const user = req.user.user._id
+    const {sessionId} = req.params
+    try {
+        const session = await Session.findById(sessionId)
+        if(!session){
+            return res.status(500).json({msg : "No session found"})
+        }
+        session.noOfMentees = session.noOfMentees || [];
+            if (!session.noOfMentees.includes(user)) {
+                session.noOfMentees.push(user);
+                await session.save();
+                return res.status(201).json({ msg: "Mentees Joined", session });
+
+            }else {
+                session.noOfMentees = session.noOfMentees || [];
+            if (session.noOfMentees.includes(user)) {
+                session.noOfMentees.pull(user);
+                await session.save();
+                return res.status(201).json({ msg: "mentees unJoined"  , session});
+
+            }
+
+            }
+            
+
+            
     } catch (error) {
         
     }
@@ -69,5 +108,6 @@ module.exports = {
     getAllSession ,
     getSessionBySessionId ,
     getSessionByMentorId ,
-    createSession
+    createSession ,
+    updateSession
 }

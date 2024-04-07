@@ -24,7 +24,18 @@ const sessionSchema = new mongoose.Schema({
         type : String,
         
 
-    }
+    } ,
+    noOfMentees :  [{
+        type : mongoose.Types.ObjectId,
+        ref : "User"
+    }] ,
+
+    comments : [{
+        type : mongoose.Types.ObjectId,
+        ref : "Comment"
+    }]
+
+    
 
 
 })

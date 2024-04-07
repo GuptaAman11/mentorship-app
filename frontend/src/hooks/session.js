@@ -1,0 +1,106 @@
+import { useState } from "react";
+
+export function useCreateSession() {
+  const createSession = async (sessionData) => {
+    console.log(sessionData)
+    try {
+      const authToken = localStorage.getItem('token');
+      const formData = new FormData();
+      formData.append('title', sessionData.title);
+      formData.append('description', sessionData.description);
+      formData.append('domain', sessionData.domain);
+      formData.append('topic', sessionData.topic);
+      formData.append('image', sessionData.image);
+      formData.append('timeField', true);
+      formData.append('date', sessionData.date);
+      formData.append('time', sessionData.time);
+
+      const response = await fetch('http://localhost:8000/api/v1/session/createSession', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: formData,
+      });
+      const responseData = await response.json();
+      if (response.ok) {
+        console.log('session created successfully');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return { createSession };
+}
+
+export function useGetAllSession() {
+    const [sessionData ,setSessionData ]= useState([]);
+
+    const getAllSession = async () => {
+        try {
+        const authToken = localStorage.getItem('token');
+        const response = await fetch('http://localhost:8000/api/v1/session/getAllSession', {
+            method: 'GET',
+            headers: {
+            Authorization: `Bearer ${authToken}`,
+            },
+        });
+        const responseData = await response.json();
+        if (response.ok) {
+            console.log(responseData);
+            setSessionData(responseData);
+        }
+        } catch (error) {
+        console.log(error);
+        }
+    };
+    return { getAllSession , sessionData };
+}
+
+export function useGetSessionBySessionId() {
+    const [sessionData ,setSessionData ]= useState([]);
+
+    const getSessionBySessionId = async (sessionId) => {
+        try {
+        const authToken = localStorage.getItem('token');
+        const response = await fetch(`http://localhost:8000/api/v1/session/getSessionBySessionId/${sessionId}`, {
+            method: 'GET',
+            headers: {
+            Authorization: `Bearer ${authToken}`,
+            },
+        });
+        const responseData = await response.json();
+        if (response.ok) {
+            console.log(responseData);
+            setSessionData(responseData);
+        }
+        } catch (error) {
+        console.log(error);
+        }
+    };
+    return { getSessionBySessionId , sessionData };
+ }
+
+ export function useGetSessionByMentorId() {
+    const [sessionData ,setSessionData ]= useState([]);
+
+    const getSessionByMentorId = async (mentorId) => {
+        try {
+        const authToken = localStorage.getItem('token');
+        const response = await fetch(`http://localhost:8000/api/v1/session/getSessionByMentorId/${mentorId}`, {
+            method: 'GET',
+            headers: {
+            Authorization: `Bearer ${authToken}`,
+            },
+        });
+        const responseData = await response.json();
+        if (response.ok) {
+            console.log(responseData);
+            setSessionData(responseData);
+        }
+        } catch (error) {
+        console.log(error);
+        }
+    };
+    return { getSessionByMentorId , sessionData };
+ }

@@ -36,9 +36,9 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password , typeOfUser} = req.body;
     try {
-        if (!email || !password) {
+        if (!email || !password || !typeOfUser) {
             return res.json({ mssg: "all fileds are required" })
         }
 

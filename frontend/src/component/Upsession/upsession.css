@@ -1,7 +1,5 @@
 .session-container{
-    width: 100vw;
-    height: 100vh;
-    border: 2px solid red;
+  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,24 +7,18 @@
 }
 
 .session-sub-container{
-    width: 60%;
-    height: 90%;
-    border: 3px solid white;
+  
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
     align-items: center;
    padding-top: 2rem;
    border-radius: 1rem;
-   box-shadow: 2px 2px 5px rgba(227, 227, 236, 0.5),
-   -2px -2px 5px rgba(141, 141, 143, 0.5), 2px -2px 5px rgba(158, 158, 164, 0.5),
-   -2px 2px 5px rgba(188, 188, 197, 0.5);
+   
 
 }
 
 .session-card{
-    width: 80%;
-    height: 39%;
+   
     border: 2px solid white;
     display: flex;
     border-radius: 1rem;
@@ -39,8 +31,6 @@
 }
 .session-img{
     width: 18rem;
-    height: 15rem;
-   /* background: red; */
     
 
 }
@@ -54,7 +44,6 @@ padding: 0.5rem;
 }
 
 .session-detail{
-/* background: rgb(186, 186, 134); */
 width:27.5rem;
 
 }
@@ -85,17 +74,14 @@ width:27.5rem;
 }
 .card-detail{
     padding:0.5rem 1rem;
-    /* background: #000; */
 }
 .card-detail h3,h4,h5,p{color: black;}
 
 .card-detail span{color: red;
     font-weight: 500;}
 .card-btn {
-    /* background: #000; */
     position: relative;
     display: flex;
-    /* justify-content: space-between; */
     width: 23rem;
     height: 2rem;
     margin-top: 0.3rem;
@@ -104,7 +90,7 @@ width:27.5rem;
   .card-btn h3{margin-top: 0.2rem;
 color: black;}
   .session-btn {
-    position: relative;
+    position: absolute;
     
     display: inline-flex;
     justify-content: space-between;
@@ -122,10 +108,9 @@ color: black;}
     z-index: 1;
     overflow: hidden;
     transition: 0.5s;
-    margin-left: 13rem;
+    right: 20px;
   }
   .session-btn:hover {
-    /* transform: skew(20deg); */
     transform: scale(1.1, 1.1);
   }
 

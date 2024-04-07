@@ -5,6 +5,7 @@ const userRoutes = require('./routes/user')
 const mentorRoutes = require('./routes/mentor')
 const messageRoutes = require("./routes/message");
 const sessionRoutes = require('./routes/session')
+const commentRoutes = require('./routes/comment')
 
 const cors = require('cors')
 
@@ -26,3 +27,4 @@ app.use('/api/v1/session', sessionRoutes);
 
 app.use('/api/v1/mentors', mentorRoutes);
 app.use("/api/v1/messages", messageRoutes);
+app.use('/api/v1/comments', commentRoutes);

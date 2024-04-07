@@ -6,8 +6,9 @@ const Login1 = () => {
     const [user,setUser] = useState("");
     const navigate = useNavigate()
     const [loginData , setloginData] = useState({
-        loginEmail : "" , loginPassword:""
+        loginEmail : "" , loginPassword:"" ,typeOfUser:""
     })
+    console.log(loginData)
 
     const login =async()=>{
        try {
@@ -21,16 +22,24 @@ const Login1 = () => {
                  
                  email: loginData.loginEmail,
                  password: loginData.loginPassword,
+                 typeOfUser : loginData.typeOfUser
              }),
  
          })
          const responseData = await response.json();
          if (response.ok) {
+          console.log("second",responseData.user._id)
             await setUser(responseData)
-            navigate('/home')
+            if (loginData.typeOfUser === 'mentor') {
+              navigate(`/dashboard/${responseData.user._id}`)
+
+            }
+            else if (loginData.typeOfUser === 'mentee') {
+              navigate('/profile')
+
+            }
 
              console.log('userlogged in sucessfully');
-            console.log(user)
              localStorage.setItem('token',responseData.token)
          }
          else {
@@ -91,8 +100,18 @@ const Login1 = () => {
             <input type="password" placeholder="Password" name="loginPassword" required onChange={handleInputForm} class="w-full px-3 py-2 border rounded-lg" />
           </div>
           <div class="mb-4">
+            Select Type :
+            <select name="typeOfUser" onChange={handleInputForm} id="" class="w-full px-3 py-2 border rounded-lg">
+            <option value="">select option</option>
+
+              <option value="mentor">Mentor</option>
+              <option value="mentee">Mentee</option>
+            </select>
+          </div>
+          <div class="mb-4">
             <button type="submit" class="w-full bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 focus:outline-none">Submit</button>
           </div>
+          
         </form>
         <Link to={'/signup'}>
         <p>Not a member? <a href="#">Click here for Registration</a></p>

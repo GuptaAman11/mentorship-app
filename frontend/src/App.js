@@ -15,6 +15,8 @@ import Upsession from "./component/Upsession/Upsession";
 
 
 import MentorCard from "./component/MenteeCard/MentorCard";
+import CreateSession from "./component/Upsession/CreateSession";
+import SessionView from "./component/SessionView/SessionView";
 
 
 function App() {
@@ -36,10 +38,14 @@ function App() {
             <Route path='/cards' element={<MentorCard /> } />
 
             <Route path='/detail' element={<DetailsPage /> } />
-            <Route path='/dashboard' element={<Dashboard /> } />
+            <Route path='/dashboard/:mentorId' element={<Dashboard /> } />
             <Route path='/nav' element={<Navbar /> } />
 
             <Route path='/session' element={<Upsession/> } />
+            <Route path='/createsession' element={<CreateSession/> } />
+            <Route path='/sessionbyid/:sessionId' element={<SessionView/> } />
+
+
 
         </Routes>
       </Router>
