@@ -1,3 +1,4 @@
+
 .menteecard-main-div{
   display: flex;
 }
@@ -16,7 +17,9 @@
   box-shadow: (0,0,0,4px);
 }
 
-
+.search-bar1 {
+  margin-top: 40px;
+}
 
 .image {
   padding: 10px ;
@@ -110,4 +113,3 @@
   font-weight: 400;
   padding-left: 10px;
 }
-

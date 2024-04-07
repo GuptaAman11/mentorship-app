@@ -23,6 +23,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar />
         <Routes>
 
           <Route path="/message" element={<Inbox />} />
@@ -43,7 +44,7 @@ function App() {
 
             <Route path='/session' element={<Upsession/> } />
             <Route path='/createsession' element={<CreateSession/> } />
-            <Route path='/sessionbyid/:sessionId' element={<SessionView/> } />
+            <Route path='/sessionbyid' element={<SessionView/> } />
 
 
 

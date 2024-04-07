@@ -93,6 +93,7 @@ function Dashboard() {
             <div className="absolute bottom-4 right-4  ">
             <button  className='bg-blue-500 text-white px-11 py-2 rounded-lg mr-1'>delete</button>
 
+            <button className="bg-gray-700 text-white px-5 py-2 rounded-lg mr-1">join</button>
 
                 <button className="bg-gray-700 text-white px-5 py-2 rounded-lg mr-1">Comment</button>
             </div>
