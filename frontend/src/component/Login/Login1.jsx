@@ -22,13 +22,12 @@ const Login1 = () => {
                  
                  email: loginData.loginEmail,
                  password: loginData.loginPassword,
-                 typeOfUser : loginData.typeOfUser
+                typeOfUser : loginData.typeOfUser
              }),
  
          })
          const responseData = await response.json();
          if (response.ok) {
-          console.log("second",responseData.user._id)
             await setUser(responseData)
             if (loginData.typeOfUser === 'mentor') {
               // navigate()`/dashboard/${responseData.user._id}`;

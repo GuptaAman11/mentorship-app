@@ -58,20 +58,21 @@ export function useGetAllSession() {
 }
 
 export function useGetSessionBySessionId() {
-    const [sessionData ,setSessionData ]= useState([]);
+    const [sessionData ,setSessionData ]= useState();
+    console.log(sessionData , "sessionData")
 
     const getSessionBySessionId = async (sessionId) => {
         try {
         const authToken = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:8000/api/v1/session/getSessionBySessionId/${sessionId}`, {
-            method: 'GET',
+        const response = await fetch(`http://localhost:8000/api/v1/session/getSessionById/${sessionId}`, {
+           method: 'GET',
             headers: {
             Authorization: `Bearer ${authToken}`,
             },
         });
         const responseData = await response.json();
         if (response.ok) {
-            console.log(responseData);
+            console.log("responseData" , responseData);
             setSessionData(responseData);
         }
         } catch (error) {
@@ -104,3 +105,25 @@ export function useGetSessionBySessionId() {
     };
     return { getSessionByMentorId , sessionData };
  }
+
+ export function useUpdateSession() {
+    const updateSession = async (sessionId, sessionData) => {
+        try {
+        const authToken = localStorage.getItem('token');
+        const response = await fetch(`http://localhost:8000/api/v1/session/updateSession/${sessionId}`, {
+            method: 'PUT',
+            headers: {
+            Authorization: `Bearer ${authToken}`,
+            'Content-Type': 'application/json',
+            },
+        });
+        const responseData = await response.json();
+        if (response.ok) {
+            console.log('session updated successfully');
+        }
+        } catch (error) {
+        console.log(error);
+        }
+    };
+    return { updateSession };
+  }
