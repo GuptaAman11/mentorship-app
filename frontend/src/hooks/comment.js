@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { baseUrl } from "../../Url";
 
 export function useCreateComment() {
     const createComment = async (sessionId, comment ) => {
         try {
             const authToken = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8000/api/v1/comments/newComments/${sessionId}`, {
+            const response = await fetch(` ${baseUrll}/api/v1/comments/newComments/${sessionId}`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${authToken}`,
@@ -30,7 +31,7 @@ export function useGetAllCommentBySessionId() {
     const getAllCommentBySessionId = async (sessionId) => {
         try {
             const authToken = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8000/api/v1/comments/getCommentById/${sessionId}`, {
+            const response = await fetch(` ${baseUrl}/api/v1/comments/getCommentById/${sessionId}`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${authToken}`,

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./inbox.css"
+import { baseUrl } from "../../../Url";
 const Inbox = ({ userId }) => {
   const [messages, setMessages] = useState([]);
   console.log(messages)
@@ -12,7 +13,7 @@ const Inbox = ({ userId }) => {
       try {
         const authToken = localStorage.getItem("token");
         const response = await fetch(
-          'http://localhost:8000/api/v1/messages/inbox' , {
+          `${baseUrl}/api/v1/messages/inbox` , {
             method : "GET",
             headers: {
               "Content-Type": "application/json",

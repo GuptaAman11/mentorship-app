@@ -3,6 +3,7 @@ import Inbox from "../Messages/Inbox";
 import SendMessageForm from "../Messages/MessageForm";
 import { Link, useParams } from "react-router-dom";
 import { useLoggedInUser } from "../../hooks/menteesHooks";
+import { baseUrl } from "../../../Url";
 
 const MessagingContainer = () => {
   const { loggedInUser, loggedUser } = useLoggedInUser();
@@ -28,7 +29,7 @@ const MessagingContainer = () => {
   const handleSendMessage = async ({ recipientId, content }) => {
     try {
       const authToken = localStorage.getItem("token");
-      await fetch(`http://localhost:8000/api/v1/messages/send/${userId}`, {
+      await fetch(` ${baseUrl}/api/v1/messages/send/${userId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

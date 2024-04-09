@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {Link, NavLink,useNavigate} from 'react-router-dom'
+import { baseUrl } from '../../../Url';
 
 
 const Login1 = () => {
@@ -12,7 +13,7 @@ const Login1 = () => {
 
     const login =async()=>{
        try {
-         const response = await fetch(`http://localhost:8000/api/v1/users/login` ,{
+         const response = await fetch(` ${baseUrl}/api/v1/users/login` ,{
              method : 'POST',
              headers : {
                  'Content-Type' : 'application/json'

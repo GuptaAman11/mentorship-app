@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import './profile.css'
 import { useLoggedInUser } from '../../hooks/menteesHooks'
+import { baseUrl } from '../../../Url'
 
 const Profile = () => {
   const {loggedInUser , loggedUser} = useLoggedInUser()
@@ -29,7 +30,7 @@ const Profile = () => {
                                     <div className="card shadow-sm">
                                         <div className="card-header bg-transparent text-center">
                                             <img className="profile_img"
-                                                src={`http://localhost:8000/${loggedUser.image}`}
+                                                src={` ${baseUrl}/${loggedUser.image}`}
                                                 alt="student dp" />
                                             <h3>{loggedUser.name}</h3>
                                         </div>

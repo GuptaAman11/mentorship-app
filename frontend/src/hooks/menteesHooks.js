@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { baseUrl } from "../../Url";
 
 export function useUpdateUserProfile() {
     const updateProfile = async (formData, availability, areaOfInterest, selectedLanguages, image) => {
@@ -23,7 +24,7 @@ export function useUpdateUserProfile() {
         form.append('image', image);
   
         const response = await fetch(
-          "http://localhost:8000/api/v1/users/editUser",
+          ` ${baseUrlrl}/api/v1/users/editUser`,
           {
             headers: {
               Authorization: `Bearer ${authToken}`,
@@ -50,7 +51,7 @@ export function useUpdateUserProfile() {
     const getAllUser = async () => {
       try {
         const authToken = localStorage.getItem('token');
-        const response = await fetch('http://localhost:8000/api/v1/users/userProfile', {
+        const response = await fetch(` ${baseUrl}/api/v1/users/userProfile`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -75,7 +76,7 @@ export function useUpdateUserProfile() {
     const loggedInUser = async () => {
       try {
         const authToken = localStorage.getItem('token');
-        const response = await fetch('http://localhost:8000/api/v1/users/loggedInUserProfile', {
+        const response = await fetch(` ${baseUrl}/api/v1/users/loggedInUserProfile`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

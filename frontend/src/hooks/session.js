@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { baseUrl } from "../../Url";
 
 export function useCreateSession() {
   const createSession = async (sessionData) => {
@@ -15,7 +16,7 @@ export function useCreateSession() {
       formData.append('date', sessionData.date);
       formData.append('time', sessionData.time);
 
-      const response = await fetch('http://localhost:8000/api/v1/session/createSession', {
+      const response = await fetch(` ${baseUrl}/api/v1/session/createSession`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${authToken}`,
@@ -39,7 +40,7 @@ export function useGetAllSession() {
     const getAllSession = async () => {
         try {
         const authToken = localStorage.getItem('token');
-        const response = await fetch('http://localhost:8000/api/v1/session/getAllSession', {
+        const response = await fetch(` ${baseUrll}/api/v1/session/getAllSession`, {
             method: 'GET',
             headers: {
             Authorization: `Bearer ${authToken}`,
@@ -64,7 +65,7 @@ export function useGetSessionBySessionId() {
     const getSessionBySessionId = async (sessionId) => {
         try {
         const authToken = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:8000/api/v1/session/getSessionById/${sessionId}`, {
+        const response = await fetch(` ${baseUrl}/api/v1/session/getSessionById/${sessionId}`, {
            method: 'GET',
             headers: {
             Authorization: `Bearer ${authToken}`,
@@ -88,7 +89,7 @@ export function useGetSessionBySessionId() {
     const getSessionByMentorId = async (mentorId) => {
         try {
         const authToken = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:8000/api/v1/session/getSessionByMentorId/${mentorId}`, {
+        const response = await fetch(` ${baseUrl}/api/v1/session/getSessionByMentorId/${mentorId}`, {
             method: 'GET',
             headers: {
             Authorization: `Bearer ${authToken}`,
@@ -110,7 +111,7 @@ export function useGetSessionBySessionId() {
     const updateSession = async (sessionId, sessionData) => {
         try {
         const authToken = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:8000/api/v1/session/updateSession/${sessionId}`, {
+        const response = await fetch(` ${baseUrl}/api/v1/session/updateSession/${sessionId}`, {
             method: 'PUT',
             headers: {
             Authorization: `Bearer ${authToken}`,

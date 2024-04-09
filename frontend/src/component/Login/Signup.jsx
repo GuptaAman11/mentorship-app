@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { baseUrl } from '../../../Url'
 
 
 
@@ -14,7 +15,7 @@ const Signup = () => {
         
     
         try {
-           const response = await fetch(`http://localhost:8000/api/v1/users/register`, {
+           const response = await fetch(` ${baseUrll}/api/v1/users/register`, {
                method: 'POST',
                headers: {
                    'Content-Type': 'application/json',
